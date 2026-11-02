@@ -1,10 +1,10 @@
 # Modèle du cask Marko (nom du fichier conservé : `cargo xtask release verify` le lit).
-# Publié dans un tap personnel (dépôt `homebrew-marko`) : `brew install --cask <compte>/marko/marko`.
+# Publié dans un tap personnel (dépôt `homebrew-marko`) : `brew install --cask merwanguerrib/marko/marko`.
 # Le dépôt officiel `homebrew-cask` juge la notoriété de l'application : à tenter plus tard, pas pour une v1.
-# Variables remplacées à la publication : 0.1.0, ffe555d028acb95e0a6e2cb0ea1716e3f2032cf0cb356d920799e3140e9a42a7 (du .dmg publié), md.marko.desktop (identifiant de bundle FINAL).
+# Variables remplacées par `ops/release/publish-manifests.sh` : 0.2.0, 23ff396e36990c7908ae50749ab6c83c4e9abec6761c4f560e4781e39461c1ea (du .dmg publié).
 cask "marko" do
-  version "0.1.0"
-  sha256 "ffe555d028acb95e0a6e2cb0ea1716e3f2032cf0cb356d920799e3140e9a42a7"
+  version "0.2.0"
+  sha256 "23ff396e36990c7908ae50749ab6c83c4e9abec6761c4f560e4781e39461c1ea"
 
   # L'adresse d'une version ne change jamais : le fichier publié sous un numéro n'est jamais remplacé.
   # Bucket R2 `marko-downloads`, servi sur son propre sous-domaine : indépendant du Worker de la landing.
@@ -13,8 +13,7 @@ cask "marko" do
   desc "Markdown editor with review of AI changes"
   homepage "https://marko.md/"
 
-  # Même source que le manifeste de mise à jour (`update-manifest.json.tmpl`) : une seule dernière version.
-  # Pas encore publié : il le sera avec le plugin de mise à jour.
+  # Même source que le mécanisme de mise à jour intégré : une seule dernière version.
   livecheck do
     url "https://downloads.marko.md/latest.json"
     strategy :json do |json|
@@ -22,8 +21,8 @@ cask "marko" do
     end
   end
 
-  # À activer seulement quand le plugin de mise à jour est intégré à l'application (il ne l'est pas encore).
-  # auto_updates true
+  # L'application se met à jour elle-même (plugin de mise à jour, depuis la 0.2.0) : `brew upgrade` ne la remplace pas sous ses pieds.
+  auto_updates true
 
   depends_on arch: :arm64
   depends_on macos: :monterey
