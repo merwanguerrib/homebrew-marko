@@ -1,10 +1,10 @@
 # Modèle du cask Marko (nom du fichier conservé : `cargo xtask release verify` le lit).
 # Publié dans un tap personnel (dépôt `homebrew-marko`) : `brew install --cask merwanguerrib/marko/marko`.
 # Le dépôt officiel `homebrew-cask` juge la notoriété de l'application : à tenter plus tard, pas pour une v1.
-# Variables remplacées par `ops/release/publish-manifests.sh` : 0.2.1, 0ad3d566f7059113818710aa6f10611b70e1a06cf8c5d8eecc79a2047a80a41b (du .dmg publié).
+# Variables remplacées par `ops/release/publish-manifests.sh` : 0.2.2, 16e675ac46fecf9b89238d34088f34bb0df40b669e4708be00d4b944bc4c8ddd (du .dmg publié).
 cask "marko" do
-  version "0.2.1"
-  sha256 "0ad3d566f7059113818710aa6f10611b70e1a06cf8c5d8eecc79a2047a80a41b"
+  version "0.2.2"
+  sha256 "16e675ac46fecf9b89238d34088f34bb0df40b669e4708be00d4b944bc4c8ddd"
 
   # L'adresse d'une version ne change jamais : le fichier publié sous un numéro n'est jamais remplacé.
   # Bucket R2 `marko-downloads`, servi sur son propre sous-domaine : indépendant du Worker de la landing.
